@@ -1,0 +1,35 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FATE</title><link rel="stylesheet" href="style.css"><script src="i18n.js"></script></head><body><main>
+<h1 data-t="resetTitle">Reset your password</h1>
+<p id="msg" class="muted">Checking the link…</p>
+<form id="form" style="display:none">
+  <p><input id="pw" type="password" minlength="8" data-t-placeholder="placeholder" autocomplete="new-password"
+     style="width:100%;padding:12px;border-radius:10px;border:1px solid #4a3f86;background:#211a4d;color:#efeaff;font-size:16px"></p>
+  <p><button data-t="change" style="width:100%;padding:14px;border:0;border-radius:12px;background:#b9a2f5;color:#0f0b27;font-size:16px;font-weight:700">Change password</button></p>
+</form>
+</main>
+<script src="config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+  const msg = document.getElementById("msg"), form = document.getElementById("form");
+  msg.textContent = t("checking");
+  if (!window.supabase) { msg.textContent = t("expired"); throw new Error("supabase-js did not load"); }
+  const sb = supabase.createClient(window.FATE.supabaseUrl, window.FATE.supabaseAnonKey);
+  let ready = false;
+  sb.auth.onAuthStateChange((event, session) => {
+    if ((event === "PASSWORD_RECOVERY" || event === "SIGNED_IN") && session && !ready) {
+      ready = true; msg.textContent = t("enter"); form.style.display = "block";
+    }
+  });
+  setTimeout(() => { if (!ready) msg.textContent = t("expired"); }, 4000);
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const pw = document.getElementById("pw").value;
+    if (pw.length < 8) { msg.textContent = t("short"); return; }
+    const { error } = await sb.auth.updateUser({ password: pw });
+    if (error) { msg.textContent = t("failed") + error.message; return; }
+    await sb.auth.signOut();
+    form.style.display = "none";
+    msg.textContent = t("done");
+  });
+</script></body></html>
