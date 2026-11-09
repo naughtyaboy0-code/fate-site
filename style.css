@@ -3,3 +3,5 @@ main{max-width:720px;margin:0 auto;padding:32px 20px 60px}
 h1{font-size:24px}h2{font-size:18px;margin-top:28px;color:#b9a2f5}
 a{color:#b9a2f5}.muted{color:#a79ccf;font-size:14px}
 a.button{display:inline-block;background:#b9a2f5;color:#0f0b27;text-decoration:none;font-weight:700;padding:12px 26px;border-radius:14px}
+button.button{font:inherit;border:0;cursor:pointer;margin-left:8px}
+.button.ghost{background:transparent;color:#b9a2f5;border:1px solid #b9a2f5;padding:11px 22px}

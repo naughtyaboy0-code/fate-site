@@ -4,7 +4,7 @@
 <h1>Contact</h1>
 <p>For questions about Stavish, bug reports, or help with your account, please email us at:</p>
 <p style="font-size:1.15em;font-weight:700;user-select:all">my.fateful.hour@gmail.com</p>
-<p><a class="button" href="mailto:my.fateful.hour@gmail.com?subject=Stavish">Send an email</a></p>
+<p><a class="button" href="mailto:my.fateful.hour@gmail.com?subject=Stavish">Send an email</a> <button class="button ghost" id="copy" type="button">Copy address</button></p>
 <h2>Please include</h2>
 <ul>
 <li>Your nickname in the app</li>
@@ -14,4 +14,6 @@
 <h2>If you feel unsafe</h2>
 <p>If someone you are chatting with makes you feel unsafe, report or block them right away from the “⋯” menu at the top right of the chat. Serious reports are reviewed by the operator within 24 hours. If anyone is in danger, contact your local emergency services immediately.</p>
 <p class="muted"><a href="terms.html">Terms of Service</a> · <a href="privacy.html">Privacy Policy</a></p>
-</main></body></html>
+</main><script>
+document.getElementById("copy").onclick=function(){var b=this;navigator.clipboard.writeText("my.fateful.hour@gmail.com").then(function(){b.textContent="Copied"})};
+</script></body></html>

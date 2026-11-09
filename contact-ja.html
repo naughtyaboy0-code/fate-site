@@ -4,7 +4,7 @@
 <h1>お問い合わせ</h1>
 <p>Stavishについてのご質問、不具合のご報告、アカウントについてのご相談は、次のメールアドレスまでお送りください。</p>
 <p style="font-size:1.15em;font-weight:700;user-select:all">my.fateful.hour@gmail.com</p>
-<p><a class="button" href="mailto:my.fateful.hour@gmail.com?subject=Stavish">メールを送る</a></p>
+<p><a class="button" href="mailto:my.fateful.hour@gmail.com?subject=Stavish">メールを送る</a> <button class="button ghost" id="copy" type="button">アドレスをコピー</button></p>
 <h2>メールに書いていただきたいこと</h2>
 <ul>
 <li>アプリでのニックネーム</li>
@@ -14,4 +14,6 @@
 <h2>危険を感じたとき</h2>
 <p>会話の相手から危険を感じた場合は、アプリのチャット画面右上の「⋯」から、すぐに通報またはブロックしてください。重大な通報は、運営者が24時間以内に確認します。命に関わる場合や犯罪に巻き込まれた場合は、すぐに警察(110番)に連絡してください。</p>
 <p class="muted"><a href="terms-ja.html">利用規約</a> · <a href="privacy-ja.html">プライバシーポリシー</a></p>
-</main></body></html>
+</main><script>
+document.getElementById("copy").onclick=function(){var b=this;navigator.clipboard.writeText("my.fateful.hour@gmail.com").then(function(){b.textContent="コピーしました"})};
+</script></body></html>
